@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "NewToursAutomation">
+
+   <test name = "AutomationTest">
+      <classes>
+         <class name = "com.bitm.NewToursAutomation.Test.A_LoginTest" />
+      
+         <class name = "com.bitm.NewToursAutomation.Test.B_FlightFinderTest" />
+         
+         <class name = "com.bitm.NewToursAutomation.Test.C_SelectFlightTest" />
+         
+         <class name = "com.bitm.NewToursAutomation.Test.D_BookFlightTest" />
+      </classes>
+   </test>
+  
+</suite>
