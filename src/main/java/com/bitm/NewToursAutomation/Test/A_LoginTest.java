@@ -30,7 +30,7 @@ public class A_LoginTest {
 		
 	}
 	
-	@Test (priority=2, dataProvider = "LoginData", dataProviderClass = LoginDataProvider.class)  
+	@Test (priority=2, dataProvider = "loginData", dataProviderClass = LoginDataProvider.class)  
 	public void logintest(List<LoginDTO> logindata) {
 		
 		
