@@ -9,20 +9,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.bitm.NewToursAutomation.DTO.BookFlightDTO;
 import com.bitm.NewToursAutomation.Provider.BookFlightProvider;
 import com.bitm.NewToursAutomation.Utils.DriverManager;
+import com.bitm.NewToursAutomation.Utils.TestNGReporting;
 import com.bitm.NewToursAutomation.Utils.UrlTextUtils;
 import com.bitm.NewToursAutomation.Utils.XpathUtils;
 
+@Listeners(TestNGReporting.class)
 public class D_BookFlightTest {
 	
 	private WebDriver we = null;
 	
 	
-	@Test (priority = 1)
+	@Test ()
 	public void BookFlightTitle () {
 		
 	we = DriverManager.dr;	
@@ -34,10 +37,10 @@ public class D_BookFlightTest {
 	Assert.assertEquals(we.getTitle(),UrlTextUtils.Text.BookFlightPageTitle);
       }
 	
-	@Test (priority = 2, dataProvider = "BookFlightData", dataProviderClass = BookFlightProvider.class)
+	@Test (dependsOnMethods = "CheckBookFlightTitle", dataProvider = "BookFlightData", dataProviderClass = BookFlightProvider.class)
 	public void BookFlightTest (List<BookFlightDTO> BookFlightdata) {
 		
-		for(BookFlightDTO BookFlight:BookFlightdata) {
+		for(BookFlightDTO BookFlight:BookFlightdata) { 
 		
 		we.findElement(By.xpath(XpathUtils.BookFlightTest.PassengerFirstName)).sendKeys(BookFlight.getPassengerFirstName());
 		

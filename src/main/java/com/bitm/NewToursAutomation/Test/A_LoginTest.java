@@ -6,20 +6,23 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.bitm.NewToursAutomation.DTO.LoginDTO;
 import com.bitm.NewToursAutomation.Provider.LoginDataProvider;
 import com.bitm.NewToursAutomation.Utils.DriverManager;
+import com.bitm.NewToursAutomation.Utils.TestNGReporting;
 import com.bitm.NewToursAutomation.Utils.UrlTextUtils;
 import com.bitm.NewToursAutomation.Utils.XpathUtils;
 
+@Listeners(TestNGReporting.class)
 public class A_LoginTest {
 	
 	private WebDriver wb = null;
 	
 	
-	@Test (priority = 1)
+	@Test ()
 	public void LoginPageTitle () {
 		
 	wb= DriverManager.dr;
@@ -30,7 +33,7 @@ public class A_LoginTest {
 		
 	}
 	
-	@Test (priority=2, dataProvider = "loginData", dataProviderClass = LoginDataProvider.class)  
+	@Test (dependsOnMethods = "LoginPageTitle", dataProvider = "loginData", dataProviderClass = LoginDataProvider.class)  
 	public void logintest(List<LoginDTO> logindata) {
 		
 		

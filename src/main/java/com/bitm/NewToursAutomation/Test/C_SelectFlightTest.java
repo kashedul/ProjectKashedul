@@ -8,18 +8,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.bitm.NewToursAutomation.Utils.DriverManager;
+import com.bitm.NewToursAutomation.Utils.TestNGReporting;
 import com.bitm.NewToursAutomation.Utils.UrlTextUtils;
 import com.bitm.NewToursAutomation.Utils.XpathUtils;
 
+
+@Listeners(TestNGReporting.class)
 public class C_SelectFlightTest {
 	
 	private WebDriver wd = null;
 	
 	
-	@Test (priority = 1)
+	@Test ()
 	public void SelectFlightTitle () {
 		
 	wd = DriverManager.dr;	
@@ -32,8 +36,8 @@ public class C_SelectFlightTest {
 		
 	}
 	
-	@Test (priority = 2)
-	public void SelectFlightTest () {
+	@Test (dependsOnMethods = "CheckSelectFlightTitle")
+	public void SelectFlightTest () { 
 		
 		wd.findElement(By.xpath(XpathUtils.SelectFlightTest.Depart)).click();
 		
